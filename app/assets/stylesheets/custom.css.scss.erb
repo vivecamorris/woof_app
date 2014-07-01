@@ -1,14 +1,21 @@
+
+/* Color codes */
 $light1: #DBCEA2;
 $light2: #BBA880;
 $accent: #6AA174;
 $accent2: #B64902;
 $dark1: #5B421B;
 
+/* General styles */
 html, body {
 	padding: 0;
 	margin: 0;
-	font-family: 'Arvo', serif;
-	cursor: url("app/assets/images/paw_cursor.png");
+	font-family: 'Lato', serif;
+	color: $dark1;	
+}
+
+body {
+	cursor: url("images/paw_cursor.png"), auto;
 }
 
 @font-face {
@@ -22,43 +29,11 @@ html, body {
 	font-style: normal;
 }
 
-header {
-	padding: 10px;
-	background-color: $light1;
-	position: relative;
-	height: 60px;
-
-}
-
-#logo {
-	vertical-align: middle;
-	line-height: 60px;
-	padding: 5px;
-	font-size: 40px;
-	font-family: 'bastillemedium', Arial;
-}
-
-#linklist {
-	position: absolute;
-	right: 0;
-	top: 0;
-	list-style-type: none;
-	font-size: 16px;
-	line-height: 40px;
-	padding: 5px;
-}
-
-#linklist li {
-	display: inline-block;
-	padding: 0px 10px;
-	vertical-align: middle;
-}
-
 a {
-	color: $accent2;
+	color: $accent;
 	text-decoration: none;
 	&:hover {
-		color: $accent;
+		color: $accent2;
 	}
 }
 
@@ -69,3 +44,48 @@ h1 {
 p {
 	text-align: center;
 }
+
+
+
+/* header */
+header {
+	padding: 10px;
+	background-color: $light1;
+	position: relative;
+	height: 45px;
+	border-bottom: 10px solid $accent;
+
+}
+
+#logo {
+	line-height: 40px;
+	vertical-align: middle;
+	padding-left: 5px;
+	font-size: 40px;
+	font-family: 'bastillemedium';
+	color: $dark1;
+}
+
+#linklist {
+	position: absolute;
+	right: 0;
+	top: 0;
+	list-style-type: none;
+	font-size: 16px;
+	line-height: 30px;
+}
+
+#linklist li {
+	display: inline-block;
+	padding: 0px 10px;
+}
+
+/* homepage body */
+
+.centered {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px;
+}
+
