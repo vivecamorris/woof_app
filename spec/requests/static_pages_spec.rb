@@ -6,7 +6,7 @@ describe "Static pages" do
     it "should have the content 'Woofenpoofs'" do
       visit '/static_pages/home'
       expect(page).to have_content('Woofenpoofs')
-      expect(page).to have_title('Yale Woofenpoofs')
+      expect(page).to have_title('Home')
     end
   end
 
