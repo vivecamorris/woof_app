@@ -1,9 +1,19 @@
+<table>
+<tr>
+	<td>Name</td>
+	<td>Email</td>
+	<td>Location</td>
+	<td>Available Time</td>
+	<td>Description</td>
+	<td>Walker or Owner</td>
+</tr>
 <% @users.each do |person| %>
-<p><%= person.name %></p>
-<p><%= person.college %>  <%= person.year %></p>
-<p><%= person.email %></p>
-<p><%= person.location %></p>
-<p><%= person.availabletime %></p>
-<p><%= person.description %></p>
-<p><%= person.type_user %></p>
+<tr>
+<td><%= person.name %></td>
+<td><%= person.email %></td>
+<td><%= person.location %></td>
+<td><%= person.availabletime %></td>
+<td><%= person.description %></td>
+<td><%= person.type_user %></td>
 <% end %>
+</table>
