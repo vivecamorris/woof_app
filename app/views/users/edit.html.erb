@@ -1,0 +1,22 @@
+<% provide(:title, 'Sign up') %>
+<h1>Finish adding your information</h1>
+
+<%= form_for @user do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name, disabled: true %></p>
+<%= f.label :netid %>
+<%= f.text_field :netid, disabled: true %></p>
+<%= f.label :email %>
+<%= f.text_field :email, disabled: true %></p>
+<%= f.label :year %>
+<%= f.text_field :year, disabled: true %></p>
+<%= f.label :college %>
+<%= f.text_field :college, disabled: true %></p>
+<%= f.label :description %>
+<%= f.text_field :description %></p>
+<%= f.label :availabletime %>
+<%= f.text_field :availabletime %></p>
+<%= f.label :location %>
+<%= f.text_field :location %></p>
+<%= f.submit "Save changes" %>
+<% end %>
