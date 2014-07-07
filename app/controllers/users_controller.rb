@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def new
-  	@user = User.find_or_create_by_netid( session[:cas_user] )
+  	@user = User.new
+  end
+
+  def create
+    @user = User.new(me_params)
   end
 
   def edit
