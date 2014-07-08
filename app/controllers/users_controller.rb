@@ -12,7 +12,20 @@ class UsersController < ApplicationController
   end
 
   def update
-  	if @me.update_attributes(me_params)
+  if  @me.update_attributes(me_params)
+
+      @places = Place.where(:id => params[:place_set])
+      @me.places.destroy_all  
+      @me.places << @places 
+
+      @weekdays = Weekday.where(:id => params[:weekday_set])
+      @me.weekdays.destroy_all  
+      @me.weekdays << @weekdays 
+
+      @openings = Opening.where(:id => params[:opening_set])
+      @me.openings.destroy_all  
+      @me.openings << @openings 
+
   		redirect_to @me
   	else
   		render 'edit'

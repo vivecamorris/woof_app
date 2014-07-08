@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707180149) do
+ActiveRecord::Schema.define(version: 20140708155214) do
+
+  create_table "openings", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "openings_users", force: true do |t|
+    t.integer "opening_id"
+    t.integer "user_id"
+  end
+
+  create_table "places", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  create_table "places_users", force: true do |t|
+    t.integer "place_id"
+    t.integer "user_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "netid"
@@ -26,6 +48,17 @@ ActiveRecord::Schema.define(version: 20140707180149) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type_user"
+  end
+
+  create_table "users_weekdays", force: true do |t|
+    t.integer "user_id"
+    t.integer "weekday_id"
+  end
+
+  create_table "weekdays", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

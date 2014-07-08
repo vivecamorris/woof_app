@@ -14,10 +14,16 @@
 <%= f.text_field :college, disabled: true %></p>
 <%= f.label :description %>
 <%= f.text_field :description %></p>
-<%= f.label :availabletime %>
-<%= f.text_field :availabletime %></p>
-<%= f.label :location %>
-<%= f.text_field :location %></p>
+
+<%= f.label :places %>
+<%= select_tag 'place_set', options_from_collection_for_select(Place.all, 'id', 'name',@user.places.map{ |j| j.id }), :multiple => true %>
+
+<%= f.label :weekdays %>
+<%= select_tag 'weekday_set', options_from_collection_for_select(Weekday.all, 'id', 'name',@user.weekdays.map{ |j| j.id }), :multiple => true %>
+
+<%= f.label :openings %>
+<%= select_tag 'opening_set', options_from_collection_for_select(Opening.all, 'id', 'name',@user.openings.map{ |j| j.id }), :multiple => true %>
+
 <%= f.label :type_user %>
 <%= f.text_field :type_user %></p>
 <%= f.submit "Save changes" %>

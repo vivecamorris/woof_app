@@ -4,7 +4,14 @@
 <p><%= @me.year %></p>
 <p><%= @me.netid %></p>
 <p><%= @me.email %></p>
-<p><%= @me.location %></p>
-<p><%= @me.availabletime %></p>
+<% @me.places.each do |f| %>
+<p><%= f.name %></p>
+<% end %>
+<% @me.weekdays.each do |f| %>
+<p><%= f.name %></p>
+<% end %>
+<% @me.openings.each do |f| %>
+<p><%= f.name %></p>
+<% end %>
 <p><%= @me.description %></p>
 <p><%= @me.type_user %></p>
