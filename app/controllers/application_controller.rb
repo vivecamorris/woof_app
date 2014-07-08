@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
 before_filter CASClient::Frameworks::Rails::Filter, :unless => :skip_login?
  
 # Add this before filter to set a local variable for the current user from CAS session
-before_filter :getMe
-# , :unless => :skip_login?
+before_filter :getMe, :unless => :skip_login?
  
 # not in Bay Gross's app controller. 
 # Prevent CSRF attacks by raising an exception.
@@ -16,8 +15,8 @@ protect_from_forgery with: :exception
 protected
  
 def getMe
-  @me = User.find_or_create_by_netid( session[:cas_user] )
-  if !@me
+  @user = User.find_or_create_by_netid( session[:cas_user] )
+  if !@user
     redirect_to :root
     return false
   end

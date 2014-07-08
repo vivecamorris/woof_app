@@ -6,6 +6,7 @@ gem 'rails', '4.0.5'
 gem 'sass', '~> 3.3.9'
 gem 'net-ldap'
 gem 'rubycas-client'
+gem 'pry-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

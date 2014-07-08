@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   require 'net/ldap'
 
-  scope :availabletime, -> (availabletime) { where availabletime: availabletime }
-  scope :location, -> (location) { where location: location }
+  scope :place, -> (place) { where place: place }
   scope :type_user, -> (type_user) { where type_user: type_user }
+
+
 
   # Associations
   has_and_belongs_to_many :places
@@ -16,7 +17,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :message => "Conflicting email address."
  
   # Callbacks
-  after_create :populateLDAP
+  after_initialize :populateLDAP
     
   # Accessors 
   def name
@@ -61,7 +62,7 @@ class User < ActiveRecord::Base
     self.year = ( p['class'] ? p['class'][0].to_i : 0 )
     self.college = ( p['college'] ? p['college'][0] : '' )
     self.save!
- 
+  
   end
  
   # not a yale email, just make best guess at it 

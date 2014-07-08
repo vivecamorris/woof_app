@@ -1,3 +1,33 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Finish adding your information</h1>
+
+<%= @user.inspect %>
+<%= form_for @user do |f| %>
+<%= f.label :fname %>
+<%= f.text_field :fname, disabled: true %></p>
+<%= f.label :netid %>
+<%= f.text_field :netid, disabled: true %></p>
+<%= f.label :email %>
+<%= f.text_field :email, disabled: true %></p>
+<%= f.label :year %>
+<%= f.text_field :year, disabled: true %></p>
+<%= f.label :college %>
+<%= f.text_field :college, disabled: true %></p>
+<%= f.label :description %>
+<%= f.text_field :description %></p>
+
+<%= f.label :places %>
+<%= select_tag 'place_set', options_from_collection_for_select(Place.all, 'id', 'name',@user.places.map{ |j| j.id }), :multiple => true %>
+
+<%= f.label :weekdays %>
+<%= select_tag 'weekday_set', options_from_collection_for_select(Weekday.all, 'id', 'name',@user.weekdays.map{ |j| j.id }), :multiple => true %>
+
+<%= f.label :openings %>
+<%= select_tag 'opening_set', options_from_collection_for_select(Opening.all, 'id', 'name',@user.openings.map{ |j| j.id }), :multiple => true %>
+
+<%= f.label :type_user %>
+<%= f.text_field :type_user %></p>
+<%= f.submit "Save changes" %>
+
+
+<% end %>

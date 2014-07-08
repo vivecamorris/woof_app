@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   def new
-  	@user = User.new
+    # user comes from before filter
   end
 
   def create
+    binding.pry
     @user = User.new(me_params)
   end
 
@@ -12,21 +13,21 @@ class UsersController < ApplicationController
   end
 
   def update
-  if  @me.update_attributes(me_params)
+  if  @user.update_attributes(me_params)
 
       @places = Place.where(:id => params[:place_set])
-      @me.places.destroy_all  
-      @me.places << @places 
+      @user.places.destroy_all  
+      @user.places << @places 
 
       @weekdays = Weekday.where(:id => params[:weekday_set])
-      @me.weekdays.destroy_all  
-      @me.weekdays << @weekdays 
+      @user.weekdays.destroy_all  
+      @user.weekdays << @weekdays 
 
       @openings = Opening.where(:id => params[:opening_set])
-      @me.openings.destroy_all  
-      @me.openings << @openings 
+      @user.openings.destroy_all  
+      @user.openings << @openings 
 
-  		redirect_to @me
+  		redirect_to @user
   	else
   		render 'edit'
   	end
@@ -35,24 +36,35 @@ class UsersController < ApplicationController
   def show
   end
 
-  def index
-    @users = User.where(nil)
-    filtering_params(params).each do |key, value|
-    @users = @users.public_send(key, value) if value.present?
-    end
+  def logout
+    reset_session
+    redirect_to 'https://secure.its.yale.edu/cas/logout'
   end
 
+  # def index
+  #   @users = User.where(nil)
+  #   filtering_params(params).each do |key, value|
+  #   @users = @users.public_send(key, value) if value.present?
+  #   end
+  # end
+
+  # def index
+  #   # @places = Place.where(:id => params[:place_set])
+  #   @users = User.where(nil) # creates an anonymous scope
+  #   @users = @users.type_user(params[:type_user]) if params[:type_user].present?
+  #   @users = @users.place(params[:place]) if params[:place].present?
+  # end
 
   private
 
   	def me_params
   		params.require(:user).permit(:name, :netid, :college, :year, :email, 
-  									 :location, :description, :availabletime, :type_user)
+  									  :description, :places, :weekdays, :openings, :type_user)
   	end
     # A list of the param names that can be used for filtering the Product list
 
-    def filtering_params(params)
-      params.slice(:location, :availabletime, :type_user)
-    end
+    # def filtering_params(params)
+    #   params.slice(:place, :type_user)
+    # end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708155214) do
+ActiveRecord::Schema.define(version: 20140708171632) do
 
   create_table "openings", force: true do |t|
     t.string   "name"
@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 20140708155214) do
     t.string   "email"
     t.integer  "year"
     t.string   "college"
-    t.string   "location"
-    t.string   "availabletime"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

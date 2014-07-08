@@ -1,20 +1,8 @@
 <%= form_tag('/users', method: :get) do %>
-<h2>Time Available</h2>
-<%= label_tag 'Morning' %>
-<%= check_box_tag 'availabletime', 'Morning' %>
-<%= label_tag 'Afternoon' %>
-<%= check_box_tag 'availabletime', 'afternoon' %>
-<%= label_tag 'Evening' %>
-<%= check_box_tag 'availabletime', 'evening' %>
-<h2>Location</h2>
-<%= label_tag 'Central Campus' %>
-<%= check_box_tag 'location', 'campus' %>
-<%= label_tag 'West Campus' %>
-<%= check_box_tag 'location', 'west campus' %>
-<%= label_tag 'Downtown' %>
-<%= check_box_tag 'location', 'downtown' %>
-<%= label_tag 'East Rock' %>
-<%= check_box_tag 'location', 'east rock' %>
+
+<%= label_tag :places %>
+<%= select_tag 'place_set', options_from_collection_for_select(Place.all, 'id', 'name',@user.places.map{ |j| j.id }), :multiple => true %>
+
 <h2>Walker or Owner</h2>
 <%= label_tag 'Walker' %>
 <%= check_box_tag 'type_user', 'walker' %>
@@ -28,8 +16,6 @@
 <tr>
 	<td>Name</td>
 	<td>Email</td>
-	<td>Location</td>
-	<td>Available Time</td>
 	<td>Description</td>
 	<td>Walker or Owner</td>
 </tr>
@@ -37,8 +23,6 @@
 <tr>
 <td><%= person.name %></td>
 <td><%= person.email %></td>
-<td><%= person.location %></td>
-<td><%= person.availabletime %></td>
 <td><%= person.description %></td>
 <td><%= person.type_user %></td>
 <% end %>
