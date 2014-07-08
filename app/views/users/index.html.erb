@@ -1,7 +1,14 @@
 <%= form_tag('/users', method: :get) do %>
 
-<%= label_tag :places %>
-<%= select_tag 'place_set', options_from_collection_for_select(Place.all, 'id', 'name',@user.places.map{ |j| j.id }), :multiple => true %>
+<h2>Location</h2>
+<%= label_tag 'Central Campus' %>
+<%= check_box_tag 'place', 'Central Campus' %>
+<%= label_tag 'West Campus' %>
+<%= check_box_tag 'place', 'West Campus' %>
+<%= label_tag 'Downtown' %>
+<%= check_box_tag 'place', 'Downtown' %>
+<%= label_tag 'East Rock' %>
+<%= check_box_tag 'place', 'East Rock' %>
 
 <h2>Walker or Owner</h2>
 <%= label_tag 'Walker' %>

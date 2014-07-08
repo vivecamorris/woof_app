@@ -1,16 +1,12 @@
 class User < ActiveRecord::Base
   require 'net/ldap'
 
-  scope :place, -> (place) { where place: place }
-  scope :type_user, -> (type_user) { where type_user: type_user }
-
-
+  scope :typeofuser, -> (type_user) { where type_user: type_user }
 
   # Associations
   has_and_belongs_to_many :places
   has_and_belongs_to_many :weekdays
   has_and_belongs_to_many :openings
-
 
  
   # Validations

@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = User.new(me_params)
   end
 
@@ -38,7 +37,8 @@ class UsersController < ApplicationController
 
   def logout
     reset_session
-    redirect_to 'https://secure.its.yale.edu/cas/logout'
+    # binding.pry
+    # redirect_to 'https://secure.its.yale.edu/cas/logout'
   end
 
   # def index
@@ -48,12 +48,13 @@ class UsersController < ApplicationController
   #   end
   # end
 
-  # def index
-  #   # @places = Place.where(:id => params[:place_set])
-  #   @users = User.where(nil) # creates an anonymous scope
-  #   @users = @users.type_user(params[:type_user]) if params[:type_user].present?
-  #   @users = @users.place(params[:place]) if params[:place].present?
-  # end
+  def index
+    # @places = Place.where(:id => params[:place_set])
+    @users = User.where(nil) # creates an anonymous scope
+    @users = @users.typeofuser(params[:type_user]) if params[:type_user].present?
+    @users = @users. if params[:place].present?
+    # @users = @users.place(params[:place_set]) if params[:place].present?
+  end
 
   private
 
