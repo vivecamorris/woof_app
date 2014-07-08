@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   require 'net/ldap'
-  
+
+  scope :availabletime, -> (availabletime) { where availabletime: availabletime }
+  scope :location, -> (location) { where location: location }
+  scope :type_user, -> (type_user) { where type_user: type_user }
+
   # Associations
  
   # Validations
@@ -13,11 +17,8 @@ class User < ActiveRecord::Base
   def name
     self.fname.capitalize + " " + self.lname.capitalize
   end
-
   
-  
- 
-protected
+ protected
  
   #populate contact fields from LDAP
   def populateLDAP

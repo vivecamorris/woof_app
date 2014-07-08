@@ -1,3 +1,9 @@
+<%= form_tag('/users', method: :get) do %>
+<%= check_box_tag 'availabletime', 'Morning' %>
+<%= check_box_tag 'location', 'campus' %>
+<%= submit_tag "Search" %>
+<% end %>
+
 <table>
 <tr>
 	<td>Name</td>
@@ -17,3 +23,4 @@
 <td><%= person.type_user %></td>
 <% end %>
 </table>
+
