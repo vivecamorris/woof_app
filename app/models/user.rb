@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   scope :typeofuser, -> (type_user) { where type_user: type_user }
 
+
   # Associations
   has_and_belongs_to_many :places
   has_and_belongs_to_many :weekdays

@@ -1,17 +1,22 @@
-<h1>Show</h1>
-<p><%= @user.name %></p>
-<p><%= @user.college %></p>
-<p><%= @user.year %></p>
-<p><%= @user.netid %></p>
-<p><%= @user.email %></p>
+<h2><%= @user.name %></h2>
+<p><b>About Me: </b><%= @user.description %></p>
+<p><b>I am a: </b><%= @user.type_user %></p>
+<% if @user.college != nil %>
+<p>College: <%= @user.college %></p>
+<% end %>
+<% if @user.year != 0 %>
+<p>Year: <%= @user.year %></p>
+<% end %>
+<p><b>Email:</b> <%= @user.email %></p>
+<p><b>Locations</b></p>
 <% @user.places.each do |f| %>
 <p><%= f.name %></p>
 <% end %>
+<p><b>Weekdays Available</b></p>
 <% @user.weekdays.each do |f| %>
 <p><%= f.name %></p>
 <% end %>
+<p><b>Times of Day Available</b></p>
 <% @user.openings.each do |f| %>
 <p><%= f.name %></p>
 <% end %>
-<p><%= @user.description %></p>
-<p><%= @user.type_user %></p>

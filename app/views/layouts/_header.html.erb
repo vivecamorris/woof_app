@@ -2,15 +2,15 @@
 <span id="logo"><a href="\">Woofenpoofs</a></span>
 <div id="linklist">
 <ul>
-	<li><%= link_to "about",   about_path %></li>
-	<li><%= link_to "all users", users_path %></li>
-<% if !@user %>
-  <li><%= link_to "log in", new_user_path %></li>
-<% else %>
- <li><%= link_to "edit profile", edit_user_path(@user) %></li>
- <li><%= link_to "log out", logout_path %></li>
+	<li><%= link_to "about", about_path %></li>
+	<% if !@signedin %>
+  	<li><%= link_to "log in", new_user_path %></li>
+  	<% else %>
+  	<li><%= link_to "all users", users_path %></li>
+  	<li><%= link_to "edit profile", edit_user_path(@user) %></li>
+	<li><%= link_to "log out", logout_path %></li>
+	<% end %>
 
-<% end %>
 </ul>
 </div>
 </header>

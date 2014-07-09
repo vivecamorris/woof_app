@@ -16,16 +16,24 @@
 <%= f.text_field :description %></p>
 
 <%= f.label :places %>
+<br>
 <%= select_tag 'place_set', options_from_collection_for_select(Place.all, 'id', 'name',@user.places.map{ |j| j.id }), :multiple => true %>
-
+<br><br>
 <%= f.label :weekdays %>
+<br>
 <%= select_tag 'weekday_set', options_from_collection_for_select(Weekday.all, 'id', 'name',@user.weekdays.map{ |j| j.id }), :multiple => true %>
-
+<br><br>
 <%= f.label :openings %>
+<br>
 <%= select_tag 'opening_set', options_from_collection_for_select(Opening.all, 'id', 'name',@user.openings.map{ |j| j.id }), :multiple => true %>
-
+<br><br>
 <%= f.label :type_user %>
-<%= f.text_field :type_user %></p>
+<br>
+<%= f.label :type_user_walker, "Walker" %>
+<%=	f.radio_button(:type_user, "walker") %>
+<%= f.label :type_user_owner, "Owner" %>
+<%=	f.radio_button(:type_user, "owner") %>
+<br><br>
 <%= f.submit "Save changes" %>
 
 

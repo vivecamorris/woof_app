@@ -3,12 +3,22 @@ class UsersController < ApplicationController
     # user comes from before filter
   end
 
+
+def signedin?
+  if session[:cas_user].exists? 
+    return true
+  else
+    return false
+  end
+end
+
   def create
     @user = User.new(me_params)
   end
 
   def edit
   	@user = User.find_or_create_by_netid( session[:cas_user] )
+
   end
 
   def update
@@ -27,6 +37,7 @@ class UsersController < ApplicationController
       @user.openings << @openings 
 
   		redirect_to @user
+
   	else
   		render 'edit'
   	end
@@ -35,25 +46,13 @@ class UsersController < ApplicationController
   def show
   end
 
-  def logout
-    reset_session
-    # binding.pry
-    # redirect_to 'https://secure.its.yale.edu/cas/logout'
-  end
-
-  # def index
-  #   @users = User.where(nil)
-  #   filtering_params(params).each do |key, value|
-  #   @users = @users.public_send(key, value) if value.present?
-  #   end
-  # end
 
   def index
-    # @places = Place.where(:id => params[:place_set])
     @users = User.where(nil) # creates an anonymous scope
     @users = @users.typeofuser(params[:type_user]) if params[:type_user].present?
-    @users = @users. if params[:place].present?
-    # @users = @users.place(params[:place_set]) if params[:place].present?
+    # placeinput = Place.where(name: params[:place]).first
+    # @users = placeinput.users if params[:place].present?
+    @users = @users.placeofuser(params[:placeinput]) if params[:placeinput].present?    
   end
 
   private

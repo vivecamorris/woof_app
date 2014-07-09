@@ -1,7 +1,7 @@
 <% provide(:title, 'Sign up') %>
 <h1>Finish adding your information</h1>
 
-<%= @user.inspect %>
+
 <%= form_for @user do |f| %>
 <%= f.label :fname %>
 <%= f.text_field :fname, disabled: true %></p>
@@ -26,7 +26,12 @@
 <%= select_tag 'opening_set', options_from_collection_for_select(Opening.all, 'id', 'name',@user.openings.map{ |j| j.id }), :multiple => true %>
 
 <%= f.label :type_user %>
-<%= f.text_field :type_user %></p>
+<br>
+<%= f.label :type_user_walker, "Walker" %>
+<%=	f.radio_button(:type_user, "walker") %>
+<%= f.label :type_user_owner, "Owner" %>
+<%=	f.radio_button(:type_user, "owner") %>
+<br><br>
 <%= f.submit "Save changes" %>
 
 

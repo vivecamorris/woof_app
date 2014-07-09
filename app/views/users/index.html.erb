@@ -1,16 +1,5 @@
 <%= form_tag('/users', method: :get) do %>
 
-<h2>Location</h2>
-<%= label_tag 'Central Campus' %>
-<%= check_box_tag 'place', 'Central Campus' %>
-<%= label_tag 'West Campus' %>
-<%= check_box_tag 'place', 'West Campus' %>
-<%= label_tag 'Downtown' %>
-<%= check_box_tag 'place', 'Downtown' %>
-<%= label_tag 'East Rock' %>
-<%= check_box_tag 'place', 'East Rock' %>
-
-<h2>Walker or Owner</h2>
 <%= label_tag 'Walker' %>
 <%= check_box_tag 'type_user', 'walker' %>
 <%= label_tag 'Owner' %>
@@ -25,13 +14,17 @@
 	<td>Email</td>
 	<td>Description</td>
 	<td>Walker or Owner</td>
+	<td>Places</td>
 </tr>
 <% @users.each do |person| %>
 <tr>
-<td><%= person.name %></td>
+<td><%= link_to person.name, person %></td>
 <td><%= person.email %></td>
 <td><%= person.description %></td>
 <td><%= person.type_user %></td>
+<td><% person.places.each do |f| %>
+<p><%= f.name %></p>
+<% end %></td>
 <% end %>
 </table>
 
